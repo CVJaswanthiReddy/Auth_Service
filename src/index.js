@@ -8,6 +8,7 @@ const app = express();
 // const bcrypt=require('bcrypt');
 
 //const UserRepository= require('./repository/user-repository');
+//const UserService= require('./services/user-service');
 const prepareAndStartServer=() =>{
 
 
@@ -25,7 +26,14 @@ const prepareAndStartServer=() =>{
         // const user=await User.findByPk(2);
         // const response=bcrypt.compareSync(incomingpassword,user.password);
         // console.log(response);
-    })
+        // const service= new UserService();
+        // // const newToken= service.createToken({email:'jassu@gmail.com', id:1});
+        // // console.log("new token is",newToken);
+
+        // const token= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imphc3N1QGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE3MTY1MzA5NTksImV4cCI6MTcxNjUzMDk4OX0.HVkFQplJPlpBent3lPEryKLXNyqXBA_CCKAnWwMzBI8'
+        // const response= service.verifyToken(token);
+        // console.log(response);
+        })
 }
 
 prepareAndStartServer();
