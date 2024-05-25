@@ -4,6 +4,9 @@ const apiRoutes= require('./routes/index');
 const { PORT }= require('./config/serverConfig');
 const bodyParser = require('body-parser');
 const app = express();
+
+const db= require('./models/index');
+
 // const{User}= require('./models/index');
 // const bcrypt=require('bcrypt');
 
@@ -19,6 +22,13 @@ const prepareAndStartServer=() =>{
 
     app.listen(PORT,async() => {
         console.log(`server started on Port: ${PORT}`);
+
+        if(process.env.DB_SYNC){
+            db.sequelize.sync({alter:true});
+        }
+
+       
+       
         // const repo= new UserRepository();
         // const response=await repo.getById(1);
         // console.log(response);
