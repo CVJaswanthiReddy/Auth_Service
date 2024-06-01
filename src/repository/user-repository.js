@@ -1,7 +1,7 @@
 const  ValidationError  = require('../utilis/validation-error');
 const{ User ,Role} = require('../models/index');
-const { StatusCodes }= require('http-status-codes');
-
+const StatusCodes = require('http-status-codes');
+const ClientError=require('../utilis/client-error');
 
 class UserRepository{
 
@@ -53,6 +53,15 @@ class UserRepository{
                     email:userEmail
                 }
             });
+            if(!user)
+                {
+                    throw new ClientError(
+                        'AttributeNotFound',
+                        'Invalid email sent in the request',
+                        'Please check the email and try again',
+                        StatusCodes.NOT_FOUND
+                    )
+                }
             return user;
         } catch (error) {
             console.log("something went wrong in repository layer");
